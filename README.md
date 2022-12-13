@@ -10,6 +10,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Background image by [C D-X](https://unsplash.com/es/@cdx2?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on Unsplash.
 
+Shop logo by [bukeicon](https://www.flaticon.com/free-stickers/shop) on Flaticon.
+
 ---
 
 Last modified: 13 December 2022

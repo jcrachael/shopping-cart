@@ -1,38 +1,45 @@
 import { Outlet, NavLink } from "react-router-dom";
 import "../styles/Template.css";
+import logo from "../assets/shop.png";
 
 function Template() {
   return (
     <div className="Template">
       <header>
-        <h1>E-Commerce App</h1>
+        <div className="header-left">
+          <div className="logo">
+            <img src={logo} alt="Shop logo" />
+          </div>
+          <h2 className="title">E-Commerce App</h2>
+        </div>
+
+        <div className="header-right">
+          <nav>
+            <ul>
+              <li>
+                <NavLink
+                  to="/shopping-cart/"
+                  className={({ isActive, isPending }) =>
+                    isActive ? "active" : isPending ? "pending" : ""
+                  }
+                >
+                  Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/shopping-cart/shop"
+                  className={({ isActive, isPending }) =>
+                    isActive ? "active" : isPending ? "pending" : ""
+                  }
+                >
+                  Shop
+                </NavLink>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </header>
-
-      <nav>
-        <ul>
-          <li>
-            <NavLink
-              to="/shopping-cart/"
-              className={({ isActive, isPending }) =>
-                isActive ? "active" : isPending ? "pending" : ""
-              }
-            >
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/shopping-cart/shop"
-              className={({ isActive, isPending }) =>
-                isActive ? "active" : isPending ? "pending" : ""
-              }
-            >
-              Shop
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
-
       <div className="Outlet">
         <Outlet />
       </div>
