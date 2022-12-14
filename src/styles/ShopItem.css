@@ -1,0 +1,38 @@
+.ShopItem {
+  border: 1px black solid;
+  width: 250px;
+  height: 285px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  margin-right: 3rem;
+  opacity: 0.8;
+  transition: all0.1s ease;
+}
+
+.ShopItem:hover {
+  opacity: 1;
+}
+
+.ShopItem img {
+  height: 200px;
+  width: 180px;
+}
+
+.caption {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.add {
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.add:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,44 @@
+/* title and search */
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 0rem;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  width: 250px;
+  border: 1px black solid;
+  border-radius: 30px;
+}
+
+.search input {
+  width: 80%;
+  height: 80%;
+  margin-left: 1rem;
+  border: none;
+  background-color: #ffffff00;
+}
+
+.search img {
+  height: 80%;
+  padding-left: 10px;
+  margin-right: 1rem;
+}
+
+input[type="text"]:focus {
+  outline: none;
+}
+
+/* shop items container */
+
+.item-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
