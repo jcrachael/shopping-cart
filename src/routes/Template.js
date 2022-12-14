@@ -57,7 +57,7 @@ function Template() {
       <footer>
         <p>
           Copyright © Rachael Cole 2022. This project is{" "}
-          <a href="https://jcrachael.github.io/shopping-cart/">open source</a>.
+          <a href="https://github.com/jcrachael/shopping-cart/">open source</a>.
         </p>
       </footer>
     </div>

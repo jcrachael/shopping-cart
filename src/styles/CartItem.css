@@ -1,0 +1,42 @@
+.CartItem {
+  border-top: 1px black solid;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.CartItem:last-child {
+  border-bottom: 1px black solid;
+}
+
+.CartItem img {
+  min-width: 150px;
+  max-width: 150px;
+  margin-right: 2rem;
+}
+
+h3 {
+  padding-bottom: 1rem;
+}
+
+.info {
+  flex-basis: 80%;
+}
+
+.info p {
+  padding: 0.3rem 0rem;
+}
+
+.links {
+  display: flex;
+}
+
+.remove {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.remove:hover {
+  opacity: 1;
+}

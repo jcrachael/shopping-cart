@@ -1,0 +1,22 @@
+.totals {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 2rem;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.checkout {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.checkout a {
+  text-decoration: none;
+  color: #ffd101;
+}
+
+.checkout a:hover {
+  color: #000;
+}
