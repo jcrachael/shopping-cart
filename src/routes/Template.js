@@ -36,6 +36,16 @@ function Template() {
                   Shop
                 </NavLink>
               </li>
+              <li>
+                <NavLink
+                  to="/shopping-cart/cart"
+                  className={({ isActive, isPending }) =>
+                    isActive ? "active" : isPending ? "pending" : ""
+                  }
+                >
+                  Cart
+                </NavLink>
+              </li>
             </ul>
           </nav>
         </div>

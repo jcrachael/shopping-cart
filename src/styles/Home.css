@@ -28,24 +28,37 @@
   font-size: 3rem;
 }
 
-button {
+.button {
   margin: 2rem 0rem 0rem 0rem;
-  padding: 0.5rem 1rem;
-  border-radius: 1rem;
-  border: 1px black solid;
-
+  height: 50px;
+  width: 220px;
+  border: none;
   cursor: pointer;
-  font-size: 1.2rem;
-  background-color: var(--yellow);
-  background: linear-gradient(-45deg, #00000000 40%, #fff 0 60%, #fff 0)
-      right/300% 100% no-repeat,
-    linear-gradient(-45deg, var(--yellow) 40%, #fff 0 60%, var(--yellow) 0)
-      right/300% 100% no-repeat;
-  -webkit-background-clip: text, padding-box;
-  background-clip: text, padding-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+  box-sizing: border-box;
+  color: #ffd101;
+  font-size: 1rem;
+  font-weight: 300;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.75px;
+  transition: background-color 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
-button:hover {
-  background-position: left;
-  transition: 0.6s;
+.button:hover {
+  border: 2px black solid;
+  background-color: #ffd101;
+  color: black;
+  font-weight: 600;
+}
+
+.content a {
+  text-decoration: none;
+}
+
+.content a:hover {
+  text-decoration: none;
 }

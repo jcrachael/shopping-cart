@@ -13,6 +13,7 @@ import Template from "./routes/Template";
 import ErrorPage from "./routes/ErrorPage";
 import Home from "./routes/Home";
 import Shop from "./routes/Shop";
+import Cart from "./routes/Cart";
 
 // Router config
 const router = createBrowserRouter(
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
       <Route errorElement={<ErrorPage />}>
         <Route index element={<Home />} />
         <Route path="/shopping-cart/shop" element={<Shop />} />
+        <Route path="/shopping-cart/cart" element={<Cart />} />
       </Route>
     </Route>
   )

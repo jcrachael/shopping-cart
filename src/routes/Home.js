@@ -8,7 +8,9 @@ export default function Home() {
         <div className="content">
           <h1>Your one-stop fake shop.</h1>
           <Link to="/shopping-cart/shop">
-            <button type="button">Shop now</button>{" "}
+            <div className="button">
+              <span>Shop now</span>
+            </div>{" "}
           </Link>
         </div>
         <div className="img"></div>
