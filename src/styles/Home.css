@@ -4,6 +4,22 @@
   --yellow: #ffd101;
 }
 
+/* 1216px or narrower = hero changes from row to column*/
+@media screen and (max-width: 1216px) {
+  .hero {
+    flex-direction: column-reverse;
+  }
+  .content {
+    width: 100% !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 3rem;
+  }
+}
+
 .hero {
   display: flex;
   height: 777px;

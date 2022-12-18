@@ -20,3 +20,36 @@
 .checkout a:hover {
   color: #000;
 }
+
+@media screen and (max-width: 768px) {
+  .checkout {
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .cart-container > * {
+    flex-direction: column;
+    padding: 1rem 0rem;
+  }
+  .cart-container > * > img {
+    margin: 0;
+    padding: 0;
+  }
+  .cart-container > * > * {
+    padding: 1rem 0rem;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .totals {
+    flex-direction: column;
+    padding-top: 1rem;
+  }
+
+  .totals > span {
+    padding-top: 1rem;
+  }
+}

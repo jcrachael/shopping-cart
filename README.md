@@ -1,6 +1,8 @@
 # Shopping Cart
 
-A sample e-commerce single page application made using React.
+Live demo coming soon.
+
+An e-commerce single page application made using React.
 
 Project sourced from [The Odin Project JavaScript course](https://www.theodinproject.com/lessons/node-path-javascript-shopping-cart).
 

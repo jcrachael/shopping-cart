@@ -13,42 +13,40 @@ function Template() {
           <h2 className="title">E-Commerce App</h2>
         </div>
 
-        <div className="header-right">
-          <nav>
-            <ul>
-              <li>
-                <NavLink
-                  to="/shopping-cart/"
-                  className={({ isActive, isPending }) =>
-                    isActive ? "active" : isPending ? "pending" : ""
-                  }
-                >
-                  Home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/shopping-cart/shop"
-                  className={({ isActive, isPending }) =>
-                    isActive ? "active" : isPending ? "pending" : ""
-                  }
-                >
-                  Shop
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/shopping-cart/cart"
-                  className={({ isActive, isPending }) =>
-                    isActive ? "active" : isPending ? "pending" : ""
-                  }
-                >
-                  Cart
-                </NavLink>
-              </li>
-            </ul>
-          </nav>
-        </div>
+        <nav>
+          <ul>
+            <li>
+              <NavLink
+                to="/shopping-cart/"
+                className={({ isActive, isPending }) =>
+                  isActive ? "active" : isPending ? "pending" : ""
+                }
+              >
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/shopping-cart/shop"
+                className={({ isActive, isPending }) =>
+                  isActive ? "active" : isPending ? "pending" : ""
+                }
+              >
+                Shop
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/shopping-cart/cart"
+                className={({ isActive, isPending }) =>
+                  isActive ? "active" : isPending ? "pending" : ""
+                }
+              >
+                Cart
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
       </header>
       <div className="Outlet">
         <Outlet />

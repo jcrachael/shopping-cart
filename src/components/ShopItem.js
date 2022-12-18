@@ -1,6 +1,13 @@
 import "../styles/ShopItem.css";
 
-export default function ShopItem({ id, title, price, img }) {
+export default function ShopItem({
+  id,
+  title,
+  price,
+  img,
+  description,
+  category,
+}) {
   return (
     <div className="ShopItem" id={`item-` + id}>
       <img src={img} alt={title}></img>
