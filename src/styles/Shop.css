@@ -42,4 +42,6 @@ input[type="text"]:focus {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  max-height: 700px;
+  overflow-y: scroll;
 }
