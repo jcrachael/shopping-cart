@@ -1,8 +1,38 @@
+import { useState, useEffect } from "react";
 import { Outlet, NavLink } from "react-router-dom";
 import "../styles/Template.css";
 import logo from "../assets/shop.png";
 
 function Template() {
+  const [products, setProducts] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  // Get products
+
+  async function fetchProducts() {
+    let url = "https://fakestoreapi.com/products?limit=10";
+    const response = await fetch(url);
+    if (!response.ok) {
+      const message = `An error has occurred: ${response.status}`;
+      throw new Error(message);
+    }
+    const data = await response.json();
+    return data;
+  }
+
+  useEffect(() => {
+    fetchProducts()
+      .then((data) => {
+        setProducts(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setError(err.message);
+      });
+  }, []);
+
   return (
     <div className="Template">
       <header>
@@ -21,6 +51,7 @@ function Template() {
                 className={({ isActive, isPending }) =>
                   isActive ? "active" : isPending ? "pending" : ""
                 }
+                state={{ data: products, error: error, loading: loading }}
               >
                 Home
               </NavLink>
@@ -31,6 +62,7 @@ function Template() {
                 className={({ isActive, isPending }) =>
                   isActive ? "active" : isPending ? "pending" : ""
                 }
+                state={{ data: products, error: error, loading: loading }}
               >
                 Shop
               </NavLink>
@@ -41,6 +73,7 @@ function Template() {
                 className={({ isActive, isPending }) =>
                   isActive ? "active" : isPending ? "pending" : ""
                 }
+                state={{ data: products, error: error, loading: loading }}
               >
                 Cart
               </NavLink>
@@ -49,7 +82,7 @@ function Template() {
         </nav>
       </header>
       <div className="Outlet">
-        <Outlet />
+        <Outlet products={products} error={error} loading={loading} />
       </div>
 
       <footer>

@@ -1,40 +1,18 @@
-import { useState, useEffect } from "react";
 // Custom components
 import ShopItem from "../components/ShopItem";
 // CSS styles
 import "../styles/Shop.css";
 // Assets
-import searchIcon from "../assets/search_FILL0_wght400_GRAD0_opsz48.svg";
+import searchIcon from "../assets/search.svg";
+import { useLocation } from "react-router-dom";
 
 export default function Shop() {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const location = useLocation();
+  const data = location.state.data;
+  const error = location.state.error;
+  const loading = location.state.loading;
 
-  // Get products
-
-  async function fetchProducts() {
-    let url = "https://fakestoreapi.com/products?limit=10";
-    const response = await fetch(url);
-    if (!response.ok) {
-      const message = `An error has occurred: ${response.status}`;
-      throw new Error(message);
-    }
-    const data = await response.json();
-    return data;
-  }
-
-  useEffect(() => {
-    fetchProducts()
-      .then((data) => {
-        setData(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error(err);
-        setError(err.message);
-      });
-  }, []);
+  console.log(data);
 
   // get list
   function getList() {

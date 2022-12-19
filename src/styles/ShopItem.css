@@ -9,8 +9,7 @@
   align-items: center;
   text-align: center;
 
-  opacity: 0.8;
-  transition: all0.1s ease;
+  transition: all 0.1s ease;
 }
 
 @media screen and (max-width: 1413px) {
@@ -32,7 +31,7 @@
 }
 
 .ShopItem:hover {
-  opacity: 1;
+  background-color: #00000025;
 }
 
 .ShopItem img {
