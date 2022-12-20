@@ -1,19 +1,12 @@
 // Custom components
 import ShopItem from "../components/ShopItem";
+import LoadingSpinner from "../components/LoadingSpinner";
 // CSS styles
 import "../styles/Shop.css";
 // Assets
 import searchIcon from "../assets/search.svg";
-import { useLocation } from "react-router-dom";
 
-export default function Shop() {
-  const location = useLocation();
-  const data = location.state.data;
-  const error = location.state.error;
-  const loading = location.state.loading;
-
-  console.log(data);
-
+export default function Shop({ data, error, loading }) {
   // get list
   function getList() {
     const list = Object.values(data).map(function (item) {
@@ -37,7 +30,7 @@ export default function Shop() {
     if (error) {
       return errorNotif;
     } else if (loading) {
-      return loadingNotif;
+      return <LoadingSpinner />;
     } else {
       return getList();
     }
@@ -51,7 +44,6 @@ export default function Shop() {
     </div>
   );
   const errorNotif = <div className="error">Error! {error}</div>;
-  const loadingNotif = <div className="loading">Loading...</div>;
 
   return (
     <div className="Shop">

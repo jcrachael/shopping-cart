@@ -10,6 +10,7 @@
 .checkout {
   display: flex;
   flex-direction: row-reverse;
+  margin-bottom: 9rem;
 }
 
 .checkout a {

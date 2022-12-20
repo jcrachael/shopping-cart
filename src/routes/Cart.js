@@ -1,13 +1,8 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import CartItem from "../components/CartItem";
 import "../styles/Cart.css";
 
-export default function Cart() {
-  const location = useLocation();
-  const data = location.state.data;
-  const error = location.state.error;
-  const loading = location.state.loading;
-
+export default function Cart({ data, error, loading }) {
   // Gets the current the date and stores a JSON and string version
   function getDate() {
     const dateJSON = new Date().toJSON();
