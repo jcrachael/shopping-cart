@@ -1,8 +1,15 @@
 import "../styles/CartItem.css";
 
-export default function CartItem({ id, title, price, img, quantity }) {
+export default function CartItem({
+  id,
+  title,
+  price,
+  img,
+  quantity,
+  handleRemoveProduct,
+}) {
   return (
-    <div className="CartItem" id={`item-` + id}>
+    <div className="CartItem" id={id}>
       <img src={img} alt={title}></img>
 
       <span className="info">
@@ -18,7 +25,9 @@ export default function CartItem({ id, title, price, img, quantity }) {
         </p>
       </span>
       <span className="links">
-        <p className="remove">Remove</p>
+        <button type="button" className="remove" onClick={handleRemoveProduct}>
+          Remove
+        </button>
       </span>
     </div>
   );

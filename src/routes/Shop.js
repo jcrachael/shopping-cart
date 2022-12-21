@@ -37,12 +37,13 @@ export default function Shop({ data, error, loading }) {
   }
 
   // Simple mini components of the page
-  const search = (
-    <div className="search">
-      <input type="text"></input>
-      <img src={searchIcon} alt="search" />
-    </div>
-  );
+
+  // const search = (
+  //   <div className="search">
+  //     <input type="text"></input>
+  //     <img src={searchIcon} alt="search" />
+  //   </div>
+  // );
   const errorNotif = <div className="error">Error! {error}</div>;
 
   return (

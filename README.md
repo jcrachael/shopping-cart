@@ -13,8 +13,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 **Cart:**
 
 1. Add product to cart function
-2. Remove 1 product from cart function
-3. Remove all products from cart function
+2. Remove all products from cart function
 
 **Shop:**
 
@@ -28,4 +27,4 @@ Shop logo by [bukeicon](https://www.flaticon.com/free-stickers/shop) on Flaticon
 
 ---
 
-Last modified: 20 December 2022
+Last modified: 21 December 2022

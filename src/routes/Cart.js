@@ -1,53 +1,45 @@
 import { Link } from "react-router-dom";
 import CartItem from "../components/CartItem";
+import LoadingSpinner from "../components/LoadingSpinner";
 import "../styles/Cart.css";
 
-export default function Cart({ data, error, loading }) {
-  // Gets the current the date and stores a JSON and string version
-  function getDate() {
-    const dateJSON = new Date().toJSON();
-    const dateString = dateJSON.slice(0, 10);
-
-    return [dateJSON, dateString];
-  }
-
-  // makes a list of products in cart with their quantity
-  function getCartProducts() {
-    const prods = cart.products.map((product) => {
-      return { product: data[product.productId], quantity: product.quantity };
-    });
-    return prods;
+export default function Cart({
+  data,
+  error,
+  loading,
+  cart,
+  removeProduct,
+  cartItems,
+}) {
+  // Event listeners
+  function handleRemoveProduct(e) {
+    const productId = e.target.parentElement.parentElement.id;
+    removeProduct(productId);
   }
 
   // Cart
-  const date = getDate(); // an array: [dateJSON, dateString]
-  const cart = {
-    userId: 0,
-    date: date[1], // dateJSON is at date[0]; dateString is at date[1]
-    products: [
-      { productId: 0, quantity: 1 },
-      { productId: 1, quantity: 2 },
-    ],
-  };
-  const cartItems = getCartProducts();
-  // list of items in cart
-  const list = cartItems.map(function (item) {
+
+  // render a JSX list of the items in cartItems
+  const list = cartItems.map(function (item, index) {
     return (
       <CartItem
-        key={item.product.id}
-        id={item.product.id}
-        title={item.product.title}
-        price={item.product.price}
-        img={item.product.image}
+        key={index}
+        id={item.product[0].id}
+        title={item.product[0].title}
+        price={item.product[0].price}
+        img={item.product[0].image}
         quantity={item.quantity}
+        handleRemoveProduct={handleRemoveProduct}
       />
     );
   });
-  // prices of items in cart
+
+  // get a list of the prices of items in cart
   const prices = cartItems.map(function (item) {
-    return item.product.price * item.quantity;
+    return item.product[0].price * item.quantity;
   });
-  // total price of all products in cart
+
+  // get the total price of all products in cart
   const total = prices.reduce(
     (accumulator, currentValue) => accumulator + currentValue,
     0
@@ -59,7 +51,9 @@ export default function Cart({ data, error, loading }) {
         <h1>Cart</h1>
       </div>
 
-      <div className="cart-container">{list}</div>
+      <div className="cart-container">
+        {loading ? <LoadingSpinner /> : list}
+      </div>
 
       <div className="totals">
         <span>{list.length} items</span>
