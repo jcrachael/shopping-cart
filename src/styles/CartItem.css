@@ -20,7 +20,7 @@ h3 {
 }
 
 .info {
-  flex-basis: 80%;
+  flex-basis: 70%;
 }
 
 .info p {
@@ -29,14 +29,12 @@ h3 {
 
 .links {
   display: flex;
-}
-
-.remove {
+  flex-direction: column;
+  min-width: 120px;
   font-size: 0.8rem;
-  opacity: 0.7;
-  cursor: pointer;
 }
 
-.remove:hover {
-  opacity: 1;
+.links > button {
+  padding: 0rem 0.3rem;
+  margin: 0.3rem 0rem;
 }

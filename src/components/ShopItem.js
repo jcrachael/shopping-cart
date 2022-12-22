@@ -15,16 +15,25 @@ export default function ShopItem({
   const [counter, setCounter] = useState(1);
 
   function incrementCounter() {
-    let newCounter = counter + 1;
+    let newCounter = parseInt(counter) + 1;
     setCounter(newCounter);
   }
 
   function decrementCounter() {
-    let newCounter = counter - 1;
+    let newCounter = parseInt(counter) - 1;
     if (newCounter < 1) {
       newCounter = 1;
     }
     setCounter(newCounter);
+  }
+
+  function handleCounterChange(e) {
+    setCounter(e.target.value);
+  }
+
+  function handleClick(e) {
+    handleAddToCart(e);
+    setCounter(1);
   }
 
   return (
@@ -33,15 +42,15 @@ export default function ShopItem({
 
       <span className="caption">
         <h3 className="item-title">{title}</h3>
-
         <p className="price">${price.toFixed(2)}</p>
       </span>
 
       <AddToCart
-        handleAddToCart={handleAddToCart}
+        handleAddToCart={handleClick}
         counter={counter}
         incrementCounter={incrementCounter}
         decrementCounter={decrementCounter}
+        handleCounterChange={handleCounterChange}
       />
     </div>
   );

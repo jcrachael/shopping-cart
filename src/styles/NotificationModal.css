@@ -1,0 +1,18 @@
+.NotificationModal {
+  border: 1px black solid;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background-color: #00000010;
+}
+
+.modal-text {
+  font-size: 0.9rem;
+}
+
+.modal-close {
+  font-size: 1.3rem;
+  cursor: pointer;
+}

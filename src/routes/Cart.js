@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import CartItem from "../components/CartItem";
+import NotificationModal from "../components/NotificationModal";
 import LoadingSpinner from "../components/LoadingSpinner";
 import "../styles/Cart.css";
 
@@ -10,6 +11,10 @@ export default function Cart({
   cart,
   removeProduct,
   emptyCart,
+  notificationMessage,
+  showModal,
+  closeModal,
+  removeAllProducts,
 }) {
   // get list of products from the productIds in the cart object
   function getProductList() {
@@ -33,6 +38,11 @@ export default function Cart({
     removeProduct(productId);
   }
 
+  function handleRemoveAllProducts(e) {
+    const productId = e.target.parentElement.parentElement.id;
+    removeAllProducts(productId);
+  }
+
   // Gets the list of items in JSX and prices and total price
   function getListAndPrices() {
     let list;
@@ -50,6 +60,7 @@ export default function Cart({
             img={item.product[0].image}
             quantity={item.quantity}
             handleRemoveProduct={handleRemoveProduct}
+            handleRemoveAllProducts={handleRemoveAllProducts}
           />
         );
       });
@@ -78,6 +89,11 @@ export default function Cart({
 
   return (
     <div className="Cart">
+      <NotificationModal
+        message={notificationMessage}
+        show={showModal}
+        closeModal={closeModal}
+      />
       <div className="title">
         <h1>Cart</h1>
         <button type="button" id="emptyCartBtn" onClick={emptyCart}>

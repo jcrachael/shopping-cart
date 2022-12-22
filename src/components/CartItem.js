@@ -7,6 +7,7 @@ export default function CartItem({
   img,
   quantity,
   handleRemoveProduct,
+  handleRemoveAllProducts,
 }) {
   return (
     <div className="CartItem" id={id}>
@@ -27,6 +28,13 @@ export default function CartItem({
       <span className="links">
         <button type="button" className="remove" onClick={handleRemoveProduct}>
           Remove
+        </button>
+        <button
+          type="button"
+          className="remove-all"
+          onClick={handleRemoveAllProducts}
+        >
+          Remove all
         </button>
       </span>
     </div>

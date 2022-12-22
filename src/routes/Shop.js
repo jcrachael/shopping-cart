@@ -1,13 +1,21 @@
 // Custom components
 import ShopItem from "../components/ShopItem";
 import LoadingSpinner from "../components/LoadingSpinner";
-import { useState } from "react";
 // CSS styles
 import "../styles/Shop.css";
 // Assets
 import searchIcon from "../assets/search.svg";
+import NotificationModal from "../components/NotificationModal";
 
-export default function Shop({ data, error, loading, addToCart }) {
+export default function Shop({
+  data,
+  error,
+  loading,
+  addToCart,
+  notificationMessage,
+  showModal,
+  closeModal,
+}) {
   // addToCart event listener
   function handleAddToCart(e) {
     let id = e.target.parentElement.parentElement.id;
@@ -57,6 +65,11 @@ export default function Shop({ data, error, loading, addToCart }) {
 
   return (
     <div className="Shop">
+      <NotificationModal
+        message={notificationMessage}
+        show={showModal}
+        closeModal={closeModal}
+      />
       <div className="title">
         <h1>Shop</h1>
       </div>

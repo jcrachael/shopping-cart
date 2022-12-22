@@ -10,9 +10,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## To-dos
 
-1. Add information modals on remove/add product click
-2. Implement product search filter on Shop page
-3. CSS styling for all components
+1. Implement product search filter on Shop page
+2. CSS styling for all components
 
 ## Credits
 

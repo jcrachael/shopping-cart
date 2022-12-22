@@ -22,6 +22,15 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [cart, setCart] = useState([]);
+  // notification dialog message
+  const [notificationMessage, setNotificationMessage] = useState("");
+  const [showModal, setShowModal] = useState(false);
+
+  // close the modal
+  function closeModal() {
+    setNotificationMessage("");
+    setShowModal(false);
+  }
 
   // async function to fetch products from fakestoreAPI
   async function fetchProducts() {
@@ -64,6 +73,8 @@ export default function App() {
 
   // Removes 1 product from the cart and updates the state and cartItems
   function removeProduct(productId) {
+    let product = products.filter((item) => item.id == productId);
+
     let cartWithQuantityReduced = cart.map((item) => {
       if (item.productId == productId) {
         return { productId: item.productId, quantity: item.quantity - 1 };
@@ -75,10 +86,28 @@ export default function App() {
       (item) => item.quantity > 0
     );
     setCart(updatedCart);
+    setNotificationMessage(`1 ${product[0].title} removed from cart`);
+    setShowModal(true);
+  }
+
+  // Remove all products of one type from cart
+  function removeAllProducts(id) {
+    const productId = parseInt(id);
+    let product = products.filter((item) => item.id === productId);
+    let newCart = cart.filter((item) => {
+      if (item.productId === productId) {
+        return false;
+      }
+      return true;
+    });
+    setNotificationMessage(`All ${product[0].title} removed from cart`);
+    setShowModal(true);
+    setCart(newCart);
   }
 
   // Adds an item to the Cart
   function addToCart(productId, productQuantity) {
+    let product = products.filter((item) => item.id == productId);
     let match = checkMatch(productId);
     let quantity = parseInt(productQuantity);
     let newCart;
@@ -100,10 +129,16 @@ export default function App() {
       ];
     }
     setCart(newCart);
+    setNotificationMessage(`${quantity} ${product[0].title} added to cart`);
+    setShowModal(true);
   }
 
   // Empty the cart
   function emptyCart() {
+    if (cart.length > 0) {
+      setNotificationMessage(`Cart emptied`);
+      setShowModal(true);
+    }
     setCart([]);
   }
 
@@ -126,6 +161,9 @@ export default function App() {
                 loading={loading}
                 cart={cart}
                 addToCart={addToCart}
+                notificationMessage={notificationMessage}
+                showModal={showModal}
+                closeModal={closeModal}
               />
             }
           />
@@ -139,6 +177,10 @@ export default function App() {
                 cart={cart}
                 removeProduct={removeProduct}
                 emptyCart={emptyCart}
+                notificationMessage={notificationMessage}
+                showModal={showModal}
+                closeModal={closeModal}
+                removeAllProducts={removeAllProducts}
               />
             }
           />
@@ -146,7 +188,7 @@ export default function App() {
       </Route>
     ),
     {
-      basename: "/shopping-cart/",
+      basename: "/shopping-cart",
     }
   );
 

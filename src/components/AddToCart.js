@@ -5,6 +5,7 @@ export default function AddToCart({
   counter,
   incrementCounter,
   decrementCounter,
+  handleCounterChange,
 }) {
   return (
     <div className="AddToCart">
@@ -13,9 +14,13 @@ export default function AddToCart({
           -
         </button>
 
-        <div className="counter" id="counter">
-          {counter}
-        </div>
+        <input
+          type="number"
+          value={counter}
+          id="counter"
+          onChange={handleCounterChange}
+          min="1"
+        ></input>
 
         <button type="button" className="plus" onClick={incrementCounter}>
           +
