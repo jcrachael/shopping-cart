@@ -1,6 +1,6 @@
 # Shopping Cart
 
-Live demo coming soon.
+[View live demo](https://jcrachael.github.io/shopping-cart).
 
 An e-commerce single page application made using React.
 

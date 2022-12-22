@@ -131,7 +131,10 @@ export default function App() {
           />
         </Route>
       </Route>
-    )
+    ),
+    {
+      basename: "/shopping-cart",
+    }
   );
 
   return (
