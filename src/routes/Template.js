@@ -17,7 +17,7 @@ function Template() {
           <ul>
             <li>
               <NavLink
-                to="/shopping-cart/"
+                to="/"
                 className={({ isActive, isPending }) =>
                   isActive ? "active" : isPending ? "pending" : ""
                 }
@@ -27,7 +27,7 @@ function Template() {
             </li>
             <li>
               <NavLink
-                to="/shopping-cart/shop"
+                to="/shop"
                 className={({ isActive, isPending }) =>
                   isActive ? "active" : isPending ? "pending" : ""
                 }
@@ -37,7 +37,7 @@ function Template() {
             </li>
             <li>
               <NavLink
-                to="/shopping-cart/cart"
+                to="/cart"
                 className={({ isActive, isPending }) =>
                   isActive ? "active" : isPending ? "pending" : ""
                 }

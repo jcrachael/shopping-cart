@@ -7,7 +7,7 @@ export default function Home() {
       <section className="hero">
         <div className="content">
           <h1>Your one-stop fake shop.</h1>
-          <Link to="/shopping-cart/shop">
+          <Link to="/shop">
             <div className="button">
               <span>Shop now</span>
             </div>{" "}

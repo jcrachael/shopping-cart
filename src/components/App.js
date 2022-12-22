@@ -98,15 +98,11 @@ export default function App() {
   // Router
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route
-        path="/shopping-cart/"
-        element={<Template />}
-        errorElement={<ErrorPage />}
-      >
+      <Route path="/" element={<Template />} errorElement={<ErrorPage />}>
         <Route errorElement={<ErrorPage />}>
           <Route index element={<Home />} />
           <Route
-            path="/shopping-cart/shop"
+            path="/shop"
             element={
               <Shop
                 data={products}
@@ -118,7 +114,7 @@ export default function App() {
             }
           />
           <Route
-            path="/shopping-cart/cart"
+            path="/cart"
             element={
               <Cart
                 data={products}
@@ -133,7 +129,7 @@ export default function App() {
       </Route>
     ),
     {
-      basename: "/shopping-cart",
+      basename: "/shopping-cart/",
     }
   );
 
