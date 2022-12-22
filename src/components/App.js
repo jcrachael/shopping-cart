@@ -78,27 +78,43 @@ export default function App() {
   }
 
   // Adds an item to the Cart
-  function addToCart(productId) {
+  function addToCart(productId, productQuantity) {
     let match = checkMatch(productId);
+    let quantity = parseInt(productQuantity);
     let newCart;
     if (match === true) {
       newCart = cart.map((item) => {
         if (item.productId == productId) {
-          return { productId: item.productId, quantity: item.quantity + 1 };
+          return {
+            productId: item.productId,
+            quantity: item.quantity + quantity,
+          };
         } else {
           return item;
         }
       });
     } else if (match === false) {
-      newCart = [...cart, { productId: parseInt(productId), quantity: 1 }];
+      newCart = [
+        ...cart,
+        { productId: parseInt(productId), quantity: quantity },
+      ];
     }
     setCart(newCart);
+  }
+
+  // Empty the cart
+  function emptyCart() {
+    setCart([]);
   }
 
   // Router
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<Template />} errorElement={<ErrorPage />}>
+      <Route
+        path="/"
+        element={<Template cart={cart} />}
+        errorElement={<ErrorPage />}
+      >
         <Route errorElement={<ErrorPage />}>
           <Route index element={<Home />} />
           <Route
@@ -122,6 +138,7 @@ export default function App() {
                 loading={loading}
                 cart={cart}
                 removeProduct={removeProduct}
+                emptyCart={emptyCart}
               />
             }
           />

@@ -1,25 +1,48 @@
 import "../styles/ShopItem.css";
+import AddToCart from "./AddToCart";
+import { useState } from "react";
 
 export default function ShopItem({
   id,
   title,
   price,
   img,
-  description,
-  category,
+  // description,
+  // category,
   handleAddToCart,
 }) {
+  // Counter for item quantities
+  const [counter, setCounter] = useState(1);
+
+  function incrementCounter() {
+    let newCounter = counter + 1;
+    setCounter(newCounter);
+  }
+
+  function decrementCounter() {
+    let newCounter = counter - 1;
+    if (newCounter < 1) {
+      newCounter = 1;
+    }
+    setCounter(newCounter);
+  }
+
   return (
     <div className="ShopItem" id={id}>
       <img src={img} alt={title}></img>
+
       <span className="caption">
         <h3 className="item-title">{title}</h3>
+
         <p className="price">${price.toFixed(2)}</p>
       </span>
 
-      <p className="add" onClick={handleAddToCart}>
-        Add to cart
-      </p>
+      <AddToCart
+        handleAddToCart={handleAddToCart}
+        counter={counter}
+        incrementCounter={incrementCounter}
+        decrementCounter={decrementCounter}
+      />
     </div>
   );
 }

@@ -1,10 +1,16 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import CartItem from "../components/CartItem";
 import LoadingSpinner from "../components/LoadingSpinner";
 import "../styles/Cart.css";
 
-export default function Cart({ data, error, loading, cart, removeProduct }) {
+export default function Cart({
+  data,
+  error,
+  loading,
+  cart,
+  removeProduct,
+  emptyCart,
+}) {
   // get list of products from the productIds in the cart object
   function getProductList() {
     let list;
@@ -74,6 +80,9 @@ export default function Cart({ data, error, loading, cart, removeProduct }) {
     <div className="Cart">
       <div className="title">
         <h1>Cart</h1>
+        <button type="button" id="emptyCartBtn" onClick={emptyCart}>
+          Empty cart
+        </button>
       </div>
 
       <div className="cart-container">
@@ -86,10 +95,7 @@ export default function Cart({ data, error, loading, cart, removeProduct }) {
       </div>
 
       <div className="checkout">
-        <Link
-          to="/shopping-cart/"
-          state={{ data: data, error: error, loading: loading }}
-        >
+        <Link to="/" state={{ data: data, error: error, loading: loading }}>
           <div className="button">
             <span>Checkout</span>
           </div>{" "}

@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+
+.AddToCart {
+  display: flex;
+  justify-content: space-around;
+}
+
+.counter-container {
+  display: flex;
+  margin-right: 1rem;
+}
+
+.counter {
+  margin: 0rem 0.5rem;
+  padding: 0rem 0.3rem;
+  background-color: aliceblue;
+  border: 1px gray solid;
+  border-radius: 0.2rem;
+
+  font-size: 0.9rem;
+  align-items: center;
+  display: flex;
+}
+
+.plus,
+.minus {
+  width: 1rem;
+}

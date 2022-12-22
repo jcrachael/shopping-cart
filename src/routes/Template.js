@@ -2,7 +2,15 @@ import { Outlet, NavLink } from "react-router-dom";
 import "../styles/Template.css";
 import logo from "../assets/shop.png";
 
-function Template() {
+function Template({ cart }) {
+  let quantity = 0;
+  let quantityList = cart.map((item) => {
+    return item.quantity;
+  });
+  for (let i = 0; i < quantityList.length; i++) {
+    quantity = quantityList[i] + quantity;
+  }
+
   return (
     <div className="Template">
       <header>
@@ -42,7 +50,7 @@ function Template() {
                   isActive ? "active" : isPending ? "pending" : ""
                 }
               >
-                Cart
+                Cart ({quantity})
               </NavLink>
             </li>
           </ul>

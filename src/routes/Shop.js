@@ -1,6 +1,7 @@
 // Custom components
 import ShopItem from "../components/ShopItem";
 import LoadingSpinner from "../components/LoadingSpinner";
+import { useState } from "react";
 // CSS styles
 import "../styles/Shop.css";
 // Assets
@@ -9,8 +10,9 @@ import searchIcon from "../assets/search.svg";
 export default function Shop({ data, error, loading, addToCart }) {
   // addToCart event listener
   function handleAddToCart(e) {
-    let id = e.target.parentElement.id;
-    addToCart(id);
+    let id = e.target.parentElement.parentElement.id;
+    let quantity = parseInt(e.target.getAttribute("datacount"));
+    addToCart(id, quantity);
   }
 
   // get list
