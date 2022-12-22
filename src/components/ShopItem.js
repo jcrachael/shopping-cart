@@ -7,16 +7,19 @@ export default function ShopItem({
   img,
   description,
   category,
+  handleAddToCart,
 }) {
   return (
-    <div className="ShopItem" id={`item-` + id}>
+    <div className="ShopItem" id={id}>
       <img src={img} alt={title}></img>
       <span className="caption">
         <h3 className="item-title">{title}</h3>
         <p className="price">${price.toFixed(2)}</p>
       </span>
 
-      <p className="add">Add to cart</p>
+      <p className="add" onClick={handleAddToCart}>
+        Add to cart
+      </p>
     </div>
   );
 }

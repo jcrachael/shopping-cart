@@ -6,7 +6,13 @@ import "../styles/Shop.css";
 // Assets
 import searchIcon from "../assets/search.svg";
 
-export default function Shop({ data, error, loading }) {
+export default function Shop({ data, error, loading, addToCart }) {
+  // addToCart event listener
+  function handleAddToCart(e) {
+    let id = e.target.parentElement.id;
+    addToCart(id);
+  }
+
   // get list
   function getList() {
     const list = Object.values(data).map(function (item) {
@@ -19,6 +25,7 @@ export default function Shop({ data, error, loading }) {
           img={item.image}
           description={item.description}
           category={item.category}
+          handleAddToCart={handleAddToCart}
         />
       );
     });

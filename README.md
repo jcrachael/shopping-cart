@@ -10,13 +10,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## To-dos
 
-**Cart:**
-
-1. Add product to cart function
-2. Remove all products from cart function
-
-**Shop:**
-
+1. Remove all products from cart function
+2. Add information modals on remove/add product click
 3. Implement product search filter on Shop page
 
 ## Credits
@@ -27,4 +22,4 @@ Shop logo by [bukeicon](https://www.flaticon.com/free-stickers/shop) on Flaticon
 
 ---
 
-Last modified: 21 December 2022
+Last modified: 22 December 2022

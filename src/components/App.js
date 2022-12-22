@@ -1,4 +1,7 @@
-// This is the root of the App
+// App.js
+// This is the root component of the app, called App
+
+// React
 import { useState, useEffect } from "react";
 import {
   createBrowserRouter,
@@ -14,33 +17,13 @@ import Shop from "../routes/Shop";
 import Cart from "../routes/Cart";
 
 export default function App() {
-  // State for Shop and Cart routes
+  // State for products (data fetched from fakestoreAPI), and loading and error states
   const [products, setProducts] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [cart, setCart] = useState([]);
 
-  // Initialise a cart object
-  const initCart = [
-    { productId: 1, quantity: 1 },
-    { productId: 4, quantity: 2 },
-  ];
-  const [cart, setCart] = useState(initCart);
-
-  // Cart items
-  function getProductListFromCart() {
-    if (products) {
-      // get list of products from the productIds in the cart object
-      const cartItems = cart.map(function (product) {
-        let prod = products.filter((item) => item.id == product.productId);
-
-        return { product: prod, quantity: product.quantity };
-      });
-      return cartItems;
-    }
-  }
-  let cartItems = getProductListFromCart();
-
-  // Get products
+  // async function to fetch products from fakestoreAPI
   async function fetchProducts() {
     let url = "https://fakestoreapi.com/products?limit=10";
     const response = await fetch(url);
@@ -52,7 +35,7 @@ export default function App() {
     return data;
   }
 
-  // Fetch products from fakestoreAPI
+  // useEffect to fetch products from fakestoreAPI and store in state as products
   useEffect(() => {
     fetchProducts()
       .then((data) => {
@@ -65,7 +48,21 @@ export default function App() {
       });
   }, []);
 
-  // removes 1 product from the cart
+  // Checks if the productId matches the productId of any item in the cart
+  function checkMatch(productId) {
+    let productIds = cart.map((item) => {
+      return item.productId;
+    });
+    let match = false;
+    for (let i = 0; i < productIds.length; i++) {
+      if (productId == productIds[i]) {
+        match = true;
+      }
+    }
+    return match;
+  }
+
+  // Removes 1 product from the cart and updates the state and cartItems
   function removeProduct(productId) {
     let cartWithQuantityReduced = cart.map((item) => {
       if (item.productId == productId) {
@@ -74,12 +71,28 @@ export default function App() {
         return item;
       }
     });
-
     let updatedCart = cartWithQuantityReduced.filter(
       (item) => item.quantity > 0
     );
-    cartItems = getProductListFromCart();
     setCart(updatedCart);
+  }
+
+  // Adds an item to the Cart
+  function addToCart(productId) {
+    let match = checkMatch(productId);
+    let newCart;
+    if (match === true) {
+      newCart = cart.map((item) => {
+        if (item.productId == productId) {
+          return { productId: item.productId, quantity: item.quantity + 1 };
+        } else {
+          return item;
+        }
+      });
+    } else if (match === false) {
+      newCart = [...cart, { productId: parseInt(productId), quantity: 1 }];
+    }
+    setCart(newCart);
   }
 
   // Router
@@ -100,6 +113,7 @@ export default function App() {
                 error={error}
                 loading={loading}
                 cart={cart}
+                addToCart={addToCart}
               />
             }
           />
@@ -112,7 +126,6 @@ export default function App() {
                 loading={loading}
                 cart={cart}
                 removeProduct={removeProduct}
-                cartItems={cartItems}
               />
             }
           />
