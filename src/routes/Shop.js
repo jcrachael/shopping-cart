@@ -4,8 +4,9 @@ import LoadingSpinner from "../components/LoadingSpinner";
 // CSS styles
 import "../styles/Shop.css";
 // Assets
-import searchIcon from "../assets/search.svg";
+import Search from "../components/Search";
 import NotificationModal from "../components/NotificationModal";
+import { useState } from "react";
 
 export default function Shop({
   data,
@@ -15,6 +16,8 @@ export default function Shop({
   notificationMessage,
   showModal,
   closeModal,
+  searchProducts,
+  displayProducts,
 }) {
   // addToCart event listener
   function handleAddToCart(e) {
@@ -23,8 +26,8 @@ export default function Shop({
     addToCart(id, quantity);
   }
 
-  // get list
-  function getList() {
+  // get list of products in cart and render as JSX elements
+  function getList(data) {
     const list = Object.values(data).map(function (item) {
       return (
         <ShopItem
@@ -42,26 +45,18 @@ export default function Shop({
     return list;
   }
 
-  // Error display
-  function renderDisplay() {
+  // Get the display
+  function renderDisplay(arr) {
     if (error) {
-      return errorNotif;
+      return <div className="error">Error! {error}</div>;
     } else if (loading) {
       return <LoadingSpinner />;
+    } else if (arr !== null && arr !== undefined) {
+      return getList(arr);
     } else {
-      return getList();
+      return getList(data);
     }
   }
-
-  // Simple mini components of the page
-
-  // const search = (
-  //   <div className="search">
-  //     <input type="text"></input>
-  //     <img src={searchIcon} alt="search" />
-  //   </div>
-  // );
-  const errorNotif = <div className="error">Error! {error}</div>;
 
   return (
     <div className="Shop">
@@ -72,9 +67,10 @@ export default function Shop({
       />
       <div className="title">
         <h1>Shop</h1>
+        <Search searchProducts={searchProducts} />
       </div>
 
-      <div className="item-container">{renderDisplay()}</div>
+      <div className="item-container">{renderDisplay(displayProducts)}</div>
     </div>
   );
 }

@@ -17,7 +17,8 @@ import Shop from "../routes/Shop";
 import Cart from "../routes/Cart";
 
 export default function App() {
-  // State for products (data fetched from fakestoreAPI), and loading and error states
+  // State for products (data fetched from fakestoreAPI), and loading and
+  // error states
   const [products, setProducts] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -25,6 +26,7 @@ export default function App() {
   // notification dialog message
   const [notificationMessage, setNotificationMessage] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [displayProducts, setDisplayProducts] = useState(products);
 
   // close the modal
   function closeModal() {
@@ -56,6 +58,26 @@ export default function App() {
         setError(err.message);
       });
   }, []);
+
+  // Search products
+
+  function searchProducts(q) {
+    if (q !== null) {
+      const filteredData = products.filter((item) => {
+        if (item.title.toLowerCase().includes(q.toLowerCase())) {
+          return true;
+        } else if (item.category.toLowerCase().includes(q.toLowerCase())) {
+          return true;
+        }
+        return false;
+      });
+
+      setDisplayProducts(filteredData);
+      return;
+    }
+    setDisplayProducts(products);
+    return;
+  }
 
   // Checks if the productId matches the productId of any item in the cart
   function checkMatch(productId) {
@@ -164,6 +186,8 @@ export default function App() {
                 notificationMessage={notificationMessage}
                 showModal={showModal}
                 closeModal={closeModal}
+                searchProducts={searchProducts}
+                displayProducts={displayProducts}
               />
             }
           />
